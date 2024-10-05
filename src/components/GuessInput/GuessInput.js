@@ -1,8 +1,8 @@
 import React from 'react';
 
-function GuessInput() {
+function GuessInput({onSubmit}) {
 
-    const [guess, setGuess] = React.useState("");
+    const [tentativeGuess, setTentativeGuess] = React.useState("");
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -12,8 +12,9 @@ function GuessInput() {
             return;
         }
         */
-        console.log({guess});
-        setGuess("");
+        console.log({tentativeGuess});
+        onSubmit(tentativeGuess);
+        setTentativeGuess("");
     }
 
     function handleChange(e) {
@@ -21,7 +22,7 @@ function GuessInput() {
         if (newValue.length > 5) {
             return;
         }
-        setGuess(newValue);
+        setTentativeGuess(newValue);
     }
 
     return (
@@ -30,7 +31,7 @@ function GuessInput() {
             <input 
                 id="guess-input" 
                 type="text" 
-                value={guess} 
+                value={tentativeGuess} 
                 onChange={handleChange}
                 required={true}
                 minLength={5}
