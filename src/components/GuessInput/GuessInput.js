@@ -12,7 +12,6 @@ function GuessInput({onSubmit}) {
             return;
         }
         */
-        console.log({tentativeGuess});
         onSubmit(tentativeGuess);
         setTentativeGuess("");
     }
