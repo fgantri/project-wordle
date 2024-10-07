@@ -1,13 +1,21 @@
 import { range } from "../../utils";
 
-function Guess({value}) {
+function Guess({guess}) {
+
+    if (!guess) {
+        return (
+            <p className="guess">
+                {range(5).map((i) => (
+                    <span key={i} className="cell"></span>
+                ))}
+            </p>
+        );
+    }
 
     return (
         <p className="guess">
-            {range(5).map((i) => (
-                <span key={i} className="cell">
-                    {value ? value[i] : undefined}
-                </span>
+            {guess.map(({letter, status}, i) => (
+                <span key={i} className={`cell ${status}`}>{letter}</span>
             ))}
         </p>
     );
